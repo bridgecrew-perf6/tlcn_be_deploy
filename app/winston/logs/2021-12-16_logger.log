@@ -1,0 +1,128 @@
+[2021-12-16 07:39:11] [[32minfo[39m] Server is running on port 8080
+[2021-12-16 09:23:48] [[32minfo[39m] Server is running on port 8080
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `user_roles`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `marketNotes`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `address-villages`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `address-districts`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `address-provinces`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `favoriteFoodCategories`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `orderDetails`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `orders`;
+[2021-12-16 09:23:48] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `paymentMethods`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `deliveryMethods`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `cartDetails`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `carts`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foodCookSteps`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foodMaterials`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `products`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `quantities`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `productCategories`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foods`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foodCategories`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `roles`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `users`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `users`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER NOT NULL auto_increment , `username` VARCHAR(255) UNIQUE, `email` VARCHAR(255) UNIQUE, `password` VARCHAR(255), `firstname` VARCHAR(255), `lastname` VARCHAR(255), `gender` VARCHAR(255), `phone` VARCHAR(255), `birthday` DATE, `address` VARCHAR(255), `userAvatar` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): SHOW INDEX FROM `users`
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `roles`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `roles` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): SHOW INDEX FROM `roles`
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foodCategories`;
+[2021-12-16 09:23:49] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `foodCategories` (`id` INTEGER NOT NULL auto_increment , `catName` VARCHAR(255), `catIcon` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): SHOW INDEX FROM `foodCategories`
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foods`;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `foods` (`id` INTEGER NOT NULL auto_increment , `foodName` VARCHAR(255), `foodDescription` VARCHAR(255), `foodCalories` FLOAT, `foodImage` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `foodCategoryId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`foodCategoryId`) REFERENCES `foodCategories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): SHOW INDEX FROM `foods`
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): ALTER TABLE `foods` ADD FULLTEXT INDEX `food_index` (`foodName`)
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `productCategories`;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `productCategories` (`id` INTEGER NOT NULL auto_increment , `catName` VARCHAR(255), `catIcon` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): SHOW INDEX FROM `productCategories`
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `quantities`;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `quantities` (`id` INTEGER NOT NULL auto_increment , `quantityName` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): SHOW INDEX FROM `quantities`
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `products`;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `products` (`id` INTEGER NOT NULL auto_increment , `proName` VARCHAR(255), `proDescription` VARCHAR(255), `quantityValue` FLOAT, `price` FLOAT, `brand` VARCHAR(255), `origin` VARCHAR(255), `productAt` DATE, `expireAt` VARCHAR(255), `manual` VARCHAR(255), `preserve` VARCHAR(255), `productImage` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `productCategoryId` INTEGER, `quantityId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`productCategoryId`) REFERENCES `productCategories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`quantityId`) REFERENCES `quantities` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): SHOW INDEX FROM `products`
+[2021-12-16 09:23:50] [[32minfo[39m] Executing (default): ALTER TABLE `products` ADD FULLTEXT INDEX `product_index` (`proName`)
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foodMaterials`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `foodMaterials` (`id` INTEGER NOT NULL auto_increment , `foodMaterialName` VARCHAR(255), `quantityDescription` VARCHAR(255), `quantityValue` FLOAT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `foodId` INTEGER, `productId` INTEGER, `quantityId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`foodId`) REFERENCES `foods` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`quantityId`) REFERENCES `quantities` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `foodMaterials`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `foodCookSteps`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `foodCookSteps` (`id` INTEGER NOT NULL auto_increment , `stepNumber` INTEGER, `stepDescription` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `foodId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`foodId`) REFERENCES `foods` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `foodCookSteps`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `carts`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `carts` (`id` INTEGER NOT NULL auto_increment , `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `carts`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `cartDetails`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `cartDetails` (`id` INTEGER NOT NULL auto_increment , `quantity` INTEGER, `isBuy` TINYINT(1), `isDeleted` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `cartId` INTEGER, `productId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`cartId`) REFERENCES `carts` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `cartDetails`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `deliveryMethods`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `deliveryMethods` (`id` INTEGER NOT NULL auto_increment , `deliveryMethod` VARCHAR(255), `fee` FLOAT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `deliveryMethods`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `paymentMethods`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `paymentMethods` (`id` INTEGER NOT NULL auto_increment , `paymentType` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `paymentMethods`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `orders`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `orders` (`id` INTEGER NOT NULL auto_increment , `addressDelivery` VARCHAR(255), `deliveryAt` DATE, `isCanceled` TINYINT, `isDone` TINYINT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER, `deliveryMethodId` INTEGER, `shipperId` INTEGER, `paymentMethodId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`deliveryMethodId`) REFERENCES `deliveryMethods` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`shipperId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`paymentMethodId`) REFERENCES `paymentMethods` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `orders`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `orderDetails`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `orderDetails` (`id` INTEGER NOT NULL auto_increment , `quantity` INTEGER, `price` FLOAT, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `orderId` INTEGER, `productId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`orderId`) REFERENCES `orders` (`id`) ON DELETE SET NULL ON UPDATE CASCADE, FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `orderDetails`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `favoriteFoodCategories`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `favoriteFoodCategories` (`createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER , `foodCategoryId` INTEGER , PRIMARY KEY (`userId`, `foodCategoryId`), FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`foodCategoryId`) REFERENCES `foodCategories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `favoriteFoodCategories`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `address-provinces`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `address-provinces` (`id` INTEGER NOT NULL auto_increment , `province` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `address-provinces`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `address-districts`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `address-districts` (`id` INTEGER NOT NULL auto_increment , `district` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `addressProvinceId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`addressProvinceId`) REFERENCES `address-provinces` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `address-districts`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `address-villages`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `address-villages` (`id` INTEGER NOT NULL auto_increment , `village` VARCHAR(255), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `addressDistrictId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`addressDistrictId`) REFERENCES `address-districts` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `address-villages`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `marketNotes`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `marketNotes` (`id` INTEGER NOT NULL auto_increment , `marketNoteText` VARCHAR(255), `remindDate` DATE, `isDone` TINYINT(1), `isDeleted` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `userId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `marketNotes`
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): DROP TABLE IF EXISTS `user_roles`;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): CREATE TABLE IF NOT EXISTS `user_roles` (`createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `roleId` INTEGER , `userId` INTEGER , PRIMARY KEY (`roleId`, `userId`), FOREIGN KEY (`roleId`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE=InnoDB;
+[2021-12-16 09:23:51] [[32minfo[39m] Executing (default): SHOW INDEX FROM `user_roles`
+[2021-12-16 09:23:51] [[32minfo[39m] Dropped and Resync database
+[2021-12-16 09:29:58] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`username` = 'phuctg';
+[2021-12-16 09:29:58] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:29:58] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:29:58] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:02] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:02] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:02] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:02] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:02] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:02] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:05] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:05] [[32minfo[39m] Executing (default): SELECT `id`, `catName`, `catIcon` FROM `foodCategories` AS `foodCategories`;
+[2021-12-16 09:30:05] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:05] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:05] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:foodCategories],[object SequelizeInstance:foodCategories],[object SequelizeInstance:foodCategories],[object SequelizeInstance:foodCategories],[object SequelizeInstance:foodCategories]
+[2021-12-16 09:30:07] [[32minfo[39m] Executing (default): SELECT `createdAt`, `updatedAt`, `userId`, `foodCategoryId` FROM `favoriteFoodCategories` AS `favoriteFoodCategories` WHERE `favoriteFoodCategories`.`userId` = '1';
+[2021-12-16 09:30:07] [[32minfo[39m] Request status: [object Object] data 
+[2021-12-16 09:30:07] [[32minfo[39m] Request status: [object Object]
+[2021-12-16 09:30:09] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:09] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:09] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:10] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:10] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:10] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:10] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:10] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:10] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:12] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:12] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:12] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:12] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:12] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:12] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:14] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:14] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:14] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
+[2021-12-16 09:30:36] [[32minfo[39m] Executing (default): SELECT `id`, `username`, `email`, `password`, `firstname`, `lastname`, `gender`, `phone`, `birthday`, `address`, `userAvatar`, `createdAt`, `updatedAt` FROM `users` AS `users` WHERE `users`.`id` = '1';
+[2021-12-16 09:30:36] [[32minfo[39m] Request status: [object Object] data [object SequelizeInstance:users]
+[2021-12-16 09:30:36] [[31merror[39m] Request status: [object Object] error Error: ENOENT: no such file or directory, open 'D:\git\CNPMM\BEnull'
